@@ -1,0 +1,1 @@
+SELECT * FROM city WHERE country_id <= 10 ORDER BY country_id;

@@ -1,0 +1,1 @@
+SELECT city FROM city WHERE country_id >= 20;
