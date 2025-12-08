@@ -1,1 +1,1 @@
-SELECT film_id, title FROM film WHERE film_id <= 5;
+SELECT film_id, title FROM film LIMIT 5;

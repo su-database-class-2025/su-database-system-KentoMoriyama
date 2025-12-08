@@ -1,1 +1,1 @@
-SELECT city FROM city WHERE country_id >= 20;
+SELECT country_id, COUNT(*) FROM city GROUP BY country_id HAVING COUNT(*) >= 20;
