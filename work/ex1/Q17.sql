@@ -1,14 +1,14 @@
 SELECT
-    c.category_id,
-    c.name AS category_name,
+    category.category_id,
+    category.name,
     AVG(
-        DATE_PART('day', r.return_date - r.rental_date)
+        DATE_PART('day', rental.return_date - rental.rental_date)
     ) AS avg_rental_days
-FROM category c
-JOIN film_category fc ON c.category_id = fc.category_id
-JOIN film f ON fc.film_id = f.film_id
-JOIN inventory i ON f.film_id = i.film_id
-JOIN rental r ON i.inventory_id = r.inventory_id
-WHERE r.return_date IS NOT NULL
-GROUP BY c.category_id, c.name
-ORDER BY c.category_id;
+FROM category
+JOIN film_category ON category.category_id = film_category.category_id
+JOIN film ON film_category.film_id = film.film_id
+JOIN inventory ON film.film_id = inventory.film_id
+JOIN rental ON inventory.inventory_id = rental.inventory_id
+WHERE rental.return_date IS NOT NULL
+GROUP BY category.category_id, category.name
+ORDER BY category.category_id;
